@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AssessmentAspV1.Models.PessoaDetalhada>
+
+<h2>
+    Aniversarios de hoje
+</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </th>      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sobrenome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeNascimento)
+        </td>        
+        <td>         
+        </td>
+    </tr>
+}
+
+</table>

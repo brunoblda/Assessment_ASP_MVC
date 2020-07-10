@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AssessmentAspV1.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@{ Html.RenderAction("AniversariosDeHoje", "Gerenciador");}
+
+
+<h2>Lista de Pessoas Ordenadas por proximidade do aniversário</h2>
+<p>
+    @Html.ActionLink("Buscar", "Search")
+</p>
+<p>
+    @Html.ActionLink("Incluir Pessoa", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDeNascimento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
+            </td>
+        </tr>
+    }
+
+</table>

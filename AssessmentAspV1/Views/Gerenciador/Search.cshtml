@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AssessmentAspV1.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Search";
+}
+<p> </p>
+<span>Digite o nome ou parte do nome da pessoa:</span>
+<p> </p>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="text" name="pesquisa">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Buscar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>}
+
+<h2>Search</h2>
+
+<p>
+    @Html.ActionLink("Voltar a pagina inicial", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDeNascimento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
+            </td>
+        </tr>
+    }
+
+</table>
